@@ -1,0 +1,62 @@
+% !TEX style = snippet
+% !TEX TS-program = xelatex
+%
+% Created by ${TM_FULLNAME} on `date "+%Y-%m-%d"`.
+% Copyright (c) `date "+%Y"` ${TM_ORGANIZATION}.
+
+\documentclass[12pt]{lettre}
+\usepackage[utf8]{inputenc}
+\usepackage{polyglossia}
+\setmainlanguage{french}
+
+\usepackage{hyperref}
+
+\hypersetup
+{
+  pdftitle   = {${1:Title}},
+  pdfsubject = {${2:Subject}},
+  pdfauthor  = {${TM_FULLNAME}}
+}
+
+\usepackage{lmodern}
+\usepackage{eurosym}
+ 
+\begin{document}
+	
+% \institut{UPEC}
+ 
+\begin{letter}{
+$1
+}
+\name{${TM_FULLNAME}}
+\address{
+\vspace{-1cm}
+\includegraphics[scale=0.35]{UPEC_logo}\\
+\textbf{${TM_FULLNAME}}\\
+Université Paris-Est Créteil\\
+60, avenue du Général de Gaulle\\
+94010 Créteil
+}
+\lieu{Créteil}
+\email{matthieu.caruel@u-pec.fr}
+\telephone{+33 1 72 92 59 32}
+\nofax
+ 
+\conc{$2}
+%
+\opening{Madame, Monsieur}
+
+$3
+
+\closing{Sincères salutations,}
+%
+\begin{flushright}
+\hspace{9.5cm}
+	\includegraphics[scale=0.3]{Signature.pdf}
+\end{flushright}
+%  \encl{
+% Piece jointe
+%  }
+\end{letter}
+ 
+\end{document}

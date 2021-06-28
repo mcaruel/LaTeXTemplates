@@ -1,0 +1,184 @@
+% !TEX style = snippet
+% !TEX TS-program = xelatex
+% Created by ${TM_FULLNAME} on `date "+%Y-%m-%d"`.
+% Copyright (c) `date "+%Y"` ${TM_ORGANIZATION}.
+
+%===============================================
+% --PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%===============================================
+
+\documentclass[10pt,english,aspectratio=169,handout]{beamer}
+% ,handout
+\RequirePackage[utf8]{inputenc}
+
+% \usefonttheme{professionalfonts} % using non standard fonts for beamer
+% \usefonttheme{serif} % default family is serif
+\usepackage{fontspec}
+% \usefonttheme{serif}
+% \setmainfont{Helvetica Neue Light}
+
+\usepackage{fontawesome}
+\usepackage{lmodern} %to be able to use bold font
+% \newfontfamily\DejaSans{DejaVu Sans}
+% \usepackage{emoji}
+% \setemojifont{Twemoji}
+% \setemojifont{Apple Color Emoji}  % Optional
+\usetheme[numbering=fullbar,nofirafonts]{focus}
+% \usefonttheme{serif} % Use the Focus theme supplied with the template
+% Add option [numbering=none] to disable the footer progress bar
+% nofirafonts
+% Add option [numbering=fullbar] to show the footer progress bar as always full with a slide count
+
+% Uncomment to enable the ice-blue theme
+% \definecolor{main}{RGB}{50, 50, 50}
+% \definecolor{background}{RGB}{255, 255, 255}
+
+%===============================================
+% Math packages
+%===============================================
+\usepackage{amssymb} %maths
+% \usepackage[e]{esvect}
+\usepackage{cancel}    % usage: strike through terms in equation
+\addto\captionsfrench{\renewcommand\proofname{Preuve}}
+% \usepackage{upgreek}
+
+\usepackage{empheq}
+\newcommand*{\empheqsepline}{%
+\noalign{%
+% Space above the rule
+\kern\fboxsep
+% The rule
+\nointerlineskip
+\hbox to 0pt{%
+\kern-\fboxsep
+\vrule width\dimexpr\displaywidth+2\fboxsep height \fboxrule
+\hss
+}%
+\nointerlineskip
+% Space below the rule
+\kern\fboxsep
+}%
+}
+
+
+%===============================================
+% --Language
+%===============================================
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+%===============================================
+% --Lecture pacckages
+%===============================================
+% \usepackage{AnalyseVectorielle}
+% \usepackage{SolidesRigides}
+% \usepackage[arrowvector,vdomain]{FluidMech}
+% \usepackage{commonAbbrv}
+
+
+
+%===============================================
+% -- References
+%===============================================
+\usepackage[
+backend=biber,
+style = authoryear-comp, % define both the bibliography style and the citation style
+% bibstyle = ... to specify the bibliography style (see documentation)
+% citestyle = .... to specify the citation style (see documentation)
+sorting=nyt, % sorting option (here by name then year then title)
+% subentry,
+sortcites = true,% Whether or not to sort citations if multiple entry keys are passed to a citation command
+maxnames = 2, % if more authors than maxnames the list of authors is truncated to "minnames"
+minnames = 2,
+% maxbibnames = 3,
+hyperref=true, %to move back and forth between the main matter and the bibliography (needs the hyperref package to be loaded, see below)
+% doi=false,
+% title=false
+doi=false,
+% title=false
+]{biblatex}
+% \ExecuteBibliographyOptions{doi=false, title=false}
+\addbibresource{References.bib}
+\AtEveryCitekey{
+	\clearfield{url}
+	\clearfield{pages}
+	% \clearfield{pagetotal}
+	% \clearfield{edition}
+	\clearfield{month}
+	\clearfield{number}
+	% \clearfield{labelyear}
+	\clearfield{title}
+	}
+\renewbibmacro{in:}{}
+
+%===============================================
+% -- Define colors
+%===============================================
+
+\definecolor{myblue}{rgb}{0.0,0.57,0.81}
+\definecolor{myred}{rgb}{0.86,0,0.17}
+\definecolor{mygreen}{rgb}{0,0.58,0}
+\definecolor{mygray}{rgb}{0.4,0.4,0.4}
+\definecolor{myyellow}{rgb}{1,0.84,0.024}
+\definecolor{mycyan}{rgb}{0.19,0.835,0.87}
+\definecolor{mypurple}{rgb}{0.635,0.055,0.67}
+\definecolor{myorange}{rgb}{0.86,0.44,0.145}
+\definecolor{myblue}{rgb}{0.0,0.57,0.81}
+
+%===============================================
+% --Units
+%===============================================
+\usepackage{siunitx}
+
+%===============================================
+% --Tikz option
+%===============================================
+\usetikzlibrary{automata,positioning}
+
+%===============================================
+% --Layout
+%===============================================
+\usepackage{adjustbox}
+\AtBeginEnvironment{frame}{\setcounter{footnote}{0}} % to reset footnote number at each frame
+\usepackage{booktabs} % Required for better table rules
+%===============================================
+% --Cross referencing
+%===============================================
+\usepackage{hyperref}
+
+\hypersetup
+{
+  pdftitle   = {${1:Title}},
+  pdfsubject = {${2:Subject}},
+  pdfauthor  = {${TM_FULLNAME}}
+}
+
+%===============================================
+% --Title Frame
+%===============================================
+
+\title{$1}
+\subtitle{$2$}
+\author{${TM_FULLNAME},$3}
+% \titlegraphic{\includegraphics[scale=0.33]{Fig/}} % Optional title page image, comment this line to remove it
+\institute{${TM_ORGANIZATION}}
+% \date{}
+%
+
+\begin{document}
+%------------------------------------------------
+
+\begin{frame}
+	\maketitle % Automatically created using the information in the commands above
+\end{frame}
+
+\appendix
+
+\begin{frame}{References} %fold
+% \label{frame:references}
+\nocite{*}
+\printbibliography[heading=none]
+\end{frame}
+% % frame references (end)
+
+\end{document}
